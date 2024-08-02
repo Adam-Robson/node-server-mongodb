@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import logger from './middleware/logger.js';
-import connectDatabase from '../../config/database.js';
+import connectToDatabase from '../config/connect.js';
 import users from './routes/users.js';
 import auth from './routes/auth.js';
 import error from './middleware/error.js';
@@ -18,7 +18,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-connectDatabase();
+connectToDatabase();
 
 // middleware
 app.use(logger);

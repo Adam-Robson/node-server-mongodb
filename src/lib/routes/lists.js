@@ -1,12 +1,12 @@
 import express from 'express';
-import auth from '../middleware/auth.js';
+import authentication from '../middleware/authentication.js';
 import List from '../models/List.js';
 
 const listRouter = express.Router();
 
 // @route   POST /api/lists
 // @desc    Create a new list
-listRouter.post('/', auth, async (req, res) => {
+listRouter.post('/', authentication, async (req, res) => {
   const { name } = req.body;
 
   try {
@@ -25,7 +25,7 @@ listRouter.post('/', auth, async (req, res) => {
 
 // @route   GET /api/lists
 // @desc    Get all lists
-listRouter.get('/', auth, async (req, res) => {
+listRouter.get('/', authentication, async (req, res) => {
   try {
     const lists = await List.find({ user: req.user.id }).sort({ date: -1 });
     res.json(lists);

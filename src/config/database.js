@@ -1,16 +1,29 @@
+import { MongoClient, ServerApiVersion }  from 'mongodb';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const connectDB = async () => {
+dotenv.config();
+
+export default async function connectDatabase() {
+  const uri = process.env.MONGODB_URI;
+
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
+
   try {
-    await mongoose.connect('mongodb://localhost:27017/expressapp', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('MongoDB connected...');
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
-  }
-};
+    await mongoose.connect(uri);
+    await client.connect();
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
-export default connectDB;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
+  }
+}

@@ -1,6 +1,6 @@
 import express from 'express';
 import { check, validationResult } from 'express-validator';
-import { registerUser, loginUser } from '../services/userService.js';
+import { registerUser, loginUser } from '../services/user-service.js';
 
 const authRouter = express.Router();
 

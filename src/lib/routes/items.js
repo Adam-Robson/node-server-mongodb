@@ -1,12 +1,12 @@
 import express from 'express';
-import auth from '../middleware/auth.js';
+import authentication from '../middleware/authentication.js';
 import Item from '../models/Item.js';
 
 const itemsRouter = express.Router();
 
 // @route   POST /api/items
 // @desc    Create a new item
-itemsRouter.post('/', auth, async (req, res) => {
+itemsRouter.post('/', authentication, async (req, res) => {
   const { list, name } = req.body;
 
   try {
@@ -26,7 +26,7 @@ itemsRouter.post('/', auth, async (req, res) => {
 
 // @route   GET /api/items
 // @desc    Get all items
-itemsRouter.get('/', auth, async (req, res) => {
+itemsRouter.get('/', authentication, async (req, res) => {
   try {
     const items = await Item.find({ user: req.user.id }).sort({ date: -1 });
     res.json(items);
@@ -36,4 +36,4 @@ itemsRouter.get('/', auth, async (req, res) => {
   }
 });
 
-export default router;
+export default itemsRouter;
