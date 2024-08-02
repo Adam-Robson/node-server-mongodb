@@ -1,9 +1,12 @@
+const path = require('path');
 const express = require('express');
 const logger = require('./lib/middleware/logger');
-const path = require('path');
+const connectDatabase = require('./config/database');
 
 const app = express();
 const port = 3000;
+
+connectDatabase();
 
 app.use(logger);
 
