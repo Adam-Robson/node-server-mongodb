@@ -2,9 +2,10 @@
   "name": "lemur",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "Adam Robson <adamrayrobson@gmail.com>",
@@ -12,5 +13,12 @@
   "dependencies": {
     "express": "^4.19.2",
     "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^22.0.2",
+    "@types/nodemon": "^1.19.6",
+    "nodemon": "^3.1.4"
   }
 }

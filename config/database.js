@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-async function connectDatabase() {
+const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/lemur/', {
+    await mongoose.connect('mongodb://localhost:27017/expressapp', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('MongoDB connection successful and popping');
+    console.log('MongoDB connected...');
   } catch (err) {
     console.error(err.message);
     process.exit(1);
   }
 };
 
-module.exports = connectDB;
+export default connectDB;
