@@ -1,4 +1,3 @@
-// test/app.test.js
 import assert from 'assert';
 import http from 'http';
 import app from '../src/lib/app.js'; 

@@ -37,7 +37,7 @@ app.use(cors({
 app.use(limiter);
 
 // static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../../public')));
 
 // routes
 app.use('/api', users);
@@ -49,7 +49,7 @@ app.use('/api/lists', lists);
 app.use(error);
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../../public', 'index.html'));
 });
 
 export default app;
