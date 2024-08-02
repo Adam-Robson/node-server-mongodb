@@ -1,4 +1,4 @@
-FROM node:latest-alpine
+FROM node:latest
 
 # production by default
 ENV NODE_ENV production
